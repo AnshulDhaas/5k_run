@@ -45,11 +45,59 @@
     </form>
 
     <script>
-        document.getElementById("signupForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent the form from submitting
+        // Require Sequelize and define the data types
+        //const { Sequelize, DataTypes } = require('sequelize');
 
-            // Get the values from the form
-            var username=document.getElementById("username").value;
+        // Create a new Sequelize instance with your database connection information
+        //const sequelize = new Sequelize('mywebsite', 'myuser', 'mypassword', {
+        //host: 'localhost',
+        //dialect: 'mysql'
+        //});
+
+        // Define the User model
+        /**
+        const User = sequelize.define('User', {
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        },
+        password_hash: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        }
+        }, {
+        // Additional options
+        timestamps: true,
+        createdAt: 'created_at',
+        updatedAt: false
+        });
+
+        // Sync the model with the database
+        sequelize.sync().then(() => {
+        console.log('User model synced with database');
+        }).catch(err => {
+        console.error('Error syncing User model:', err);
+        });
+
+        // Now you can use the User model in your application
+        // For example, you can create a new user like this:
+        User.create({
+        username: 'john_doe',
+        password_hash: 'hashed_password',
+        email: 'john@example.com'
+        }).then(user => {
+        console.log('User created:', user.toJSON());
+        }).catch(err => {
+        console.error('Error creating user:', err);
+        });
+        **/
+        var username=document.getElementById("username").value;
             var password=document.getElementById("password").value;
             // Here, you can perform validation and other necessary actions
             // For a simple example, let's just log the values to console
@@ -58,17 +106,6 @@
             Object.assign(user_data, {username : username , password : password})
 
             console.log(user_data)
-
-            // You can also send these values to a server for further processing using AJAX
-            // Example AJAX request:
-            // var xhr = new XMLHttpRequest();
-            // xhr.open("POST", "your-server-endpoint-url", true);
-            // xhr.setRequestHeader("Content-Type", "application/json");
-            // xhr.send(JSON.stringify({ username: username, password: password }));
-
-            // Optionally, you can redirect the user to another page after signup
-            // window.location.href = "redirect-url";
-        });
     </script>
 </body>
 </html>
