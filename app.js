@@ -14,17 +14,28 @@ const server = http.createServer((req, res) => {
         });
 
         req.on('end', () => {
-            const userData = JSON.parse(body);
-            const username = userData.user_name;
-            const password = userData.pass_word;
+            try {
+                const userData = JSON.parse(body);
+                const username = userData.user_name;
+                const password = userData.pass_word;
 
-            // Add user data to the dictionary using the username as the key
-            users[username] = { password: password };
+                // Add user data to the dictionary using the username as the key
+                users[username] = { password: password };
 
-            console.log(users); // Log the dictionary to the console
+                console.log(`Sign-up successful for user: ${username}`); // Log the successful sign-up
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ message: 'User registered successfully' }));
+            } catch (error) {
+                console.error('Error parsing JSON:', error);
+                res.writeHead(400, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ message: 'Invalid JSON' }));
+            }
+        });
 
-            res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({ message: 'User data received' }));
+        req.on('error', (error) => {
+            console.error('Error with the request:', error);
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ message: 'Server error' }));
         });
     } else {
         let filePath = '.' + req.url;
@@ -57,12 +68,19 @@ const server = http.createServer((req, res) => {
             if (error) {
                 if (error.code === 'ENOENT') {
                     fs.readFile('./404.html', (err, data) => {
-                        res.writeHead(404, { 'Content-Type': 'text/html' });
-                        res.end(data, 'utf-8');
+                        if (err) {
+                            console.error('Error reading 404.html:', err);
+                            res.writeHead(500, { 'Content-Type': 'text/html' });
+                            res.end('Server Error');
+                        } else {
+                            res.writeHead(404, { 'Content-Type': 'text/html' });
+                            res.end(data, 'utf-8');
+                        }
                     });
                 } else {
-                    res.writeHead(500);
-                    res.end('Sorry, check with the site admin for error: ' + error.code + ' ..\n');
+                    console.error('File system error:', error);
+                    res.writeHead(500, { 'Content-Type': 'text/html' });
+                    res.end('Server Error');
                 }
             } else {
                 res.writeHead(200, { 'Content-Type': contentType });

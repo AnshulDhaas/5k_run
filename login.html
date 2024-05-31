@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <style>
-        h2{
+        h2 {
             text-align: center;
         }
         body {
-            
             font-family: Arial, sans-serif;
-            background:linear-gradient(rgb(0, 103, 105),rgb(64, 165, 120),rgb(157, 222, 139),rgb(230, 255, 148))
+            background: linear-gradient(rgb(0, 103, 105),rgb(64, 165, 120),rgb(157, 222, 139),rgb(230, 255, 148));
         }
         form {
             max-width: 300px;
@@ -42,60 +41,39 @@
     <a href="index.html">
         <button type="button" class="btn" onclick="home()" style="position: fixed; top: 20px; left: 20px">Home</button>
     </a>
-<<<<<<< HEAD
     <h2>Register</h2>
-=======
->>>>>>> 9ca7ee1b64c301319c9573cae190d6f323d78bba
     <form id="signupForm">
         <input type="text" id="username" placeholder="Username" required>
         <input type="password" id="password" placeholder="Password" required>
         <input type="submit" value="Sign Up">
     </form>
-
     <script>
-<<<<<<< HEAD
-        
-       document.getElementById('signupForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form from submitting
-=======
         document.getElementById('signupForm').addEventListener('submit', function(event) {
             event.preventDefault();
->>>>>>> 9ca7ee1b64c301319c9573cae190d6f323d78bba
-            
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-            
-<<<<<<< HEAD
-            // Here, you can perform validation and other necessary actions
-            // For a simple example, let's just log the values to the console
-            
-            let user_data = {
-                username: username,
-                password: password
-            };
-
-            console.log(user_data);
-=======
-            var user_data = {
-                user_name: username,
-                pass_word: password
-            };
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
             fetch('/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(user_data)
+                body: JSON.stringify({ user_name: username, pass_word: password })
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
-                console.log('Success:', data);
+                console.log(data.message);
+                alert(data.message);
             })
-            .catch((error) => {
+            .catch(error => {
                 console.error('Error:', error);
+                alert('An error occurred');
             });
->>>>>>> 9ca7ee1b64c301319c9573cae190d6f323d78bba
         });
     </script>
 </body>
