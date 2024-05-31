@@ -12,7 +12,7 @@ body
     height: 1000px;
     background-position: center;
     background-size: cover;
-    background-image: url('https://images.alphacoders.com/127/1276993.jpg');
+    background-image: url(https://images.unsplash.com/photo-1502224562085-639556652f33?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cnVufGVufDB8fDB8fHww);
     background-attachment: flex;
     display: flex;
     justify-content: center;
@@ -22,8 +22,18 @@ body
 
 .contentBg
 {
-    background-color: rgb(41, 2, 107);
-    background-image: url("\Users\anshu\Downloads\Blue Cute Creative Process Infographic (4).png");
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    height: 1000px;
+    background-position: center;
+    background-size: cover;
+    background-color: rgb(0, 103, 105);
+    background-attachment: flex;
+    display: flex;
+    justify-content: center;
+    color: white; /* Adjust text color for better visibility */
 }
 
 .rocket1 {
@@ -39,8 +49,8 @@ body
 }
 
 
-.purple-background {
-    background-color: rgb(41, 2, 107);
+.teal-background {
+    background-color: rgb(0, 103, 105);
 }
 
 
@@ -63,7 +73,7 @@ button {
     top: 20px;
     border: none;
     border-radius: 20px;
-    background-color: blue;
+    background-color: rgb(64, 165, 120);
     color: white;
     padding: 10px 20px;
     font-family: Arial, sans-serif;
@@ -79,7 +89,7 @@ button:hover {
     transition-delay: 0s; 
 }
 
-.5kFinish
+
 {
 
 }
