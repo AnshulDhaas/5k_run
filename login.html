@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="submit" value="Sign Up">
+    </form>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Get the values from the form
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Here, you can perform validation and other necessary actions
+            // For a simple example, let's just log the values to console
+            console.log("Username:", username);
+            console.log("Password:", password);
+            
+
+            // You can also send these values to a server for further processing using AJAX
+            // Example AJAX request:
+            // var xhr = new XMLHttpRequest();
+            // xhr.open("POST", "your-server-endpoint-url", true);
+            // xhr.setRequestHeader("Content-Type", "application/json");
+            // xhr.send(JSON.stringify({ username: username, password: password }));
+
+            // Optionally, you can redirect the user to another page after signup
+            // window.location.href = "redirect-url";
+        });
+    </script>
+</body>
+</html>
