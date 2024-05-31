@@ -2,6 +2,10 @@ body
 {
     height: 100vh;
     margin: 0;
+    text-align: center;
+    background:linear-gradient(rgb(0, 103, 105),rgb(64, 165, 120),rgb(157, 222, 139),rgb(230, 255, 148))
+    
+
 }
 
 .container {
