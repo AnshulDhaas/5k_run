@@ -17,7 +17,6 @@ const server = http.createServer((req, res) => {
             const userData = JSON.parse(body);
             const username = userData.user_name;
             const password = userData.pass_word;
-
             // Add user data to the dictionary using the username as the key
             users[username] = { password: password };
 
