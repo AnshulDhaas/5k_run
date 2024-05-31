@@ -6,8 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <style>
+        h2{
+            text-align: center;
+        }
         body {
+            
             font-family: Arial, sans-serif;
+            background:linear-gradient(rgb(0, 103, 105),rgb(64, 165, 120),rgb(157, 222, 139),rgb(230, 255, 148))
         }
         form {
             max-width: 300px;
@@ -37,7 +42,7 @@
     <a href="index.html">
         <button type="button" class="btn" onclick="home()" style="position: fixed; top: 20px; left: 20px">Home</button>
     </a>
-    <h2>Sign Up</h2>
+    <h2>Register</h2>
     <form id="signupForm">
         <input type="text" id="username" placeholder="Username" required>
         <input type="password" id="password" placeholder="Password" required>
@@ -45,15 +50,23 @@
     </form>
 
     <script>
-        var username=document.getElementById("username").value;
-            var password=document.getElementById("password").value;
-            // Here, you can perform validation and other necessary actions
-            // For a simple example, let's just log the values to console
+        
+       document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting
             
-            let user_data={}
-            Object.assign(user_data, {username : username , password : password})
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            
+            // Here, you can perform validation and other necessary actions
+            // For a simple example, let's just log the values to the console
+            
+            let user_data = {
+                username: username,
+                password: password
+            };
 
-            console.log(user_data)
+            console.log(user_data);
+        });
     </script>
 </body>
 </html>
