@@ -42,7 +42,10 @@
     <a href="index.html">
         <button type="button" class="btn" onclick="home()" style="position: fixed; top: 20px; left: 20px">Home</button>
     </a>
+<<<<<<< HEAD
     <h2>Register</h2>
+=======
+>>>>>>> 9ca7ee1b64c301319c9573cae190d6f323d78bba
     <form id="signupForm">
         <input type="text" id="username" placeholder="Username" required>
         <input type="password" id="password" placeholder="Password" required>
@@ -50,13 +53,19 @@
     </form>
 
     <script>
+<<<<<<< HEAD
         
        document.getElementById('signupForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form from submitting
+=======
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+>>>>>>> 9ca7ee1b64c301319c9573cae190d6f323d78bba
             
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
             
+<<<<<<< HEAD
             // Here, you can perform validation and other necessary actions
             // For a simple example, let's just log the values to the console
             
@@ -66,6 +75,27 @@
             };
 
             console.log(user_data);
+=======
+            var user_data = {
+                user_name: username,
+                pass_word: password
+            };
+
+            fetch('/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user_data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+>>>>>>> 9ca7ee1b64c301319c9573cae190d6f323d78bba
         });
     </script>
 </body>
