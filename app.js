@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const port = 3000;
 
-const users = {}; // Dictionary to store user data
+const users = {};
 
 const server = http.createServer((req, res) => {
     if (req.method === 'POST' && req.url === '/signup') {
@@ -18,10 +18,10 @@ const server = http.createServer((req, res) => {
             const username = userData.user_name;
             const password = userData.pass_word;
 
-            // Add user data to the dictionary
-            users[username] = password;
+            // Add user data to the dictionary using the username as the key
+            users[username] = { password: password };
 
-            console.log('Users:', users); // Log the dictionary to the console
+            console.log(users); // Log the dictionary to the console
 
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify({ message: 'User data received' }));
