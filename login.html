@@ -49,14 +49,15 @@
             event.preventDefault(); // Prevent the form from submitting
 
             // Get the values from the form
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-
+            var username=document.getElementById("username").value;
+            var password=document.getElementById("password").value;
             // Here, you can perform validation and other necessary actions
             // For a simple example, let's just log the values to console
-            console.log("Username:", username);
-            console.log("Password:", password);
             
+            let user_data={}
+            Object.assign(user_data, {username : username , password : password})
+
+            console.log(user_data)
 
             // You can also send these values to a server for further processing using AJAX
             // Example AJAX request:
