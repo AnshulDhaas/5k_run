@@ -18,11 +18,10 @@ const server = http.createServer((req, res) => {
                 const userData = JSON.parse(body);
                 const username = userData.user_name;
                 const password = userData.pass_word;
-
                 // Add user data to the dictionary using the username as the key
                 users[username] = { password: password };
 
-                console.log(`Sign-up successful for user: ${username}`); // Log the successful sign-up
+                console.log(users); // Log the successful sign-up
                 res.writeHead(200, { 'Content-Type': 'application/json' });
                 res.end(JSON.stringify({ message: 'User registered successfully' }));
             } catch (error) {
@@ -37,6 +36,9 @@ const server = http.createServer((req, res) => {
             res.writeHead(500, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify({ message: 'Server error' }));
         });
+    } else if (req.method === 'GET' && req.url === '/users') {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(users));
     } else {
         let filePath = '.' + req.url;
         if (filePath === './') {
