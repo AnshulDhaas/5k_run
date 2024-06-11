@@ -15,11 +15,29 @@ const server = http.createServer((req, res) => {
 
         req.on('end', () => {
             try {
+                console.log('Received body:', body); // Log the raw body
                 const userData = JSON.parse(body);
-                const username = userData.user_name;
+
+                // Log parsed user data
+                console.log('Parsed user data:', userData);
+
+                const firstName = userData.first_name;
+                const lastName = userData.last_name;
+                const email = userData.email;
                 const password = userData.pass_word;
-                // Add user data to the dictionary using the username as the key
-                users[username] = { password: password };
+
+                // Log each parsed field
+                console.log('First Name:', firstName);
+                console.log('Last Name:', lastName);
+                console.log('Email:', email);
+                console.log('Password:', password);
+
+                if (!email || !password || !firstName || !lastName) {
+                    throw new Error('Missing required fields');
+                }
+
+                // Add user data to the dictionary using the email as the key
+                users[email] = { firstName: firstName, lastName: lastName, password: password };
 
                 console.log(users); // Log the successful sign-up
                 res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -27,7 +45,7 @@ const server = http.createServer((req, res) => {
             } catch (error) {
                 console.error('Error parsing JSON:', error);
                 res.writeHead(400, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({ message: 'Invalid JSON' }));
+                res.end(JSON.stringify({ message: 'Invalid JSON or missing required fields' }));
             }
         });
 
