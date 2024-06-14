@@ -62,7 +62,6 @@ h1 {
 p {
     color: white;
     font-family: Arial, sans-serif; /* Replace "idk" with a valid font family */
-    transform: translateY(360px);
 }
 
 button {
@@ -127,42 +126,81 @@ button:hover {
 
 .typewriter h1 {
     overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: .15em solid rgb(230, 255, 148); /* The typwriter cursor */
+    border-right: .15em solid rgb(230, 255, 148); /* The typewriter cursor */
     white-space: nowrap; /* Keeps the content on a single line */
     margin: 0 auto; /* Gives that scrolling effect as the typing happens */
     letter-spacing: .15em; /* Adjust as needed */
     animation: 
-      typing 3.5s steps(40, end),
-      blink-caret .75s step-end infinite;
-  }
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
 
-  #form
-  {
+/* The typing effect */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 35% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: rgb(230, 255, 148); }
+}
+
+#form {
     padding-top: 60px;
     padding-top: 80px; /* Add padding to prevent content from being hidden behind the navbar */
     display: flex;
     justify-content: center;
     width: 100%;
-  }
-  
-  /* The typing effect */
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 35% }
-  }
-  
-  /* The typewriter cursor effect */
-  @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: rgb(230, 255, 148); }
-  }
+}
 
-  #registerBg
-  {
+#registerBg {
     background-color: rgb(76, 205, 153);
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+}
+
+#aboutUsBg {
+    background-color: rgb(76, 205, 153);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centering the content horizontally */
+    min-height: 100vh; /* Ensure it covers the entire viewport height */
+}
+
+#anshuldhaas {
+    margin-bottom: 40px; /* Space between profiles */
+}
+
+.profile {
+    background-color: rgb(76, 205, 153);
+    color: black;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.profile img {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+#aboutUsText
+{
+    color: white;
+    font-family: Arial, sans-serif;
+}
